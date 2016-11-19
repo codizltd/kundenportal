@@ -1,3 +1,6 @@
 #ognore .pyc files
 *.pyc
+*.py~
+*.xml~
 /felix1de_backend/*.pyc
+/customer_ticketing_system/*.py~

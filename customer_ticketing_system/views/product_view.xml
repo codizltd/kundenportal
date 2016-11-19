@@ -9,8 +9,8 @@
 		    <field name="arch" type="xml">
 		        <tree string="Employee1">  
                           <field name="name" string="Paket Name"/>	
-                          <field name="Start1" string="Start1"/>	
-                          <field name="Ende1" string="Ende1"/>	
+                         <!-- <field name="Start1" string="Start1"/>	
+                          <field name="Ende1" string="Ende1"/>	-->
                           	
                           
 		            
@@ -43,13 +43,13 @@
 					   <group>
 					      <group>
 						      <field name="name" string="client Name"/>
-						      <field name="DatenOK" string="date"/>
+						     <!-- <field name="DatenOK" string="date"/>
 		                                      <field name="Start1" string="start date"/>
-                                                      <field name="Ende1" string="end date"/>
+                                                      <field name="Ende1" string="end date"/>-->
 						    
 					      </group>
 					      <group>						      
-						      <field name="Bemerkung" string="Remarks"/>
+						     <!-- <field name="Bemerkung" string="Remarks"/>-->
 		                                    
 					      </group>
                                               
@@ -72,6 +72,10 @@
 							</page>
 					   </notebook>
 		           </sheet>
+                               <div class="oe_chatter">
+				    <field name="message_follower_ids" widget="mail_followers" />
+				    <field name="message_ids" widget="mail_thread"/>
+				</div>
 		        </form>
 		    </field>
 		</record>
