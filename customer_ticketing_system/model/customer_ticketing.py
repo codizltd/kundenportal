@@ -7,21 +7,17 @@ class Felix1Ticket(models.Model):
 	_name='felix1.ticket'
 	_inherit = ['mail.thread']
 	
-	prm_ticket_id=fields.Char('Ticket-ID',compute='creat_ticket_id')
-	#frk_ticket_id=fields.Many2one('felix1.ticket')
+       
+            
+	prm_ticket_id=fields.Char('Ticket-ID',compute='creat_ticket_id')	
 	name=fields.Char('Ticket')
 	claticketname=fields.Char('claTicketName')
 	state=fields.Selection([('new', 'Neu'),('progress','In Bearbeitung..'),('done', 'Bearbeitet'),('cancel', 'Abgebrochen')], string='Status',  default='new')
 	company_id = fields.Many2one('res.company', 'Niederlassung', default=lambda self: self.env['res.company']._company_default_get('felix1.ticket'))
-	#
 	mitarbeiter_id=fields.Many2one('felix1.employees',"Zugewiesener Mitarbeiter")
 	priPriority=fields.Many2one('res.partner', "Ticket-Ersteller")
-	#calFirstnameLastname=fields.Char(string="Zugewiesener Mitarbeiter", related="priPriority.name")
-	#cal_last_name=fields.Char(string='Last Name', related='priPriority.lastname')
 	conMail=fields.Char( string="Email", related="priPriority.email")
 	ToDoPhone=fields.Char( string="Telefon" , related="priPriority.phone")
-	#tikSenderName=fields.Char('Absender Name')
-	#tikSenderID=fields.Char('Absender ID')
 	tikSenderDirectDial=fields.Char('Absender Durchwahl')
 	tikSenderEmail=fields.Char('Absender Email')
 	tikStartDate=fields.Date('Erstellt Am')
@@ -30,7 +26,6 @@ class Felix1Ticket(models.Model):
 	frkKathegory_id=fields.Many2one('felix1.ticket.kathegoriess', string='Kathegorie')
 	frkRemark=fields.Text('Bemerkung')
 	frkChamber=fields.Char('Niederlassung')
-	#frmEmployee=fields.Many2one('felix1.employees', 'Mitarbeiter')
 	frmSenderChamber=fields.Char('Absender-Kanzlei')
 	frmContact=fields.Many2one('felix1.contacts', 'Kontakte')
 	ChamBranch_rel=fields.Many2one('branch.branch', string="Kanzlei-Niederlassung")
@@ -44,11 +39,44 @@ class Felix1Ticket(models.Model):
 	ToDoDone=fields.Boolean('Erledigt')
 	responsible=fields.Char('Verantwortlich')
 	partner_id=fields.Many2one('res.partner')
+        mandanten_id=fields.Many2one('backend.mandanten', string="Mandanten")
         ticket_id_date=fields.Date('Ticket Erstellt Am') 
         ticket_id=fields.Many2one('felix1.ticket')
+        backend_kontakte_id=fields.Many2one('backend.kontakte', string="kontakte")
         contact_id=fields.Many2one('contact.contacts')
-	#message_ids=fields.Many2one('mail.message')
-	#message_follower_ids=fields.One2many('mail.followers','ticket_id')
+        project_issue_id=fields.Many2one('project.issue')
+        @api.model
+	def _create_sequence(self, vals):
+	    """ Create new project issue"""
+	    seq = {
+		'name': vals['name'],
+                'partner_id':vals['priPriority'],
+                'email_from':vals['conMail'],
+		#'prm_ticket_id':vals['prm_ticket_id'],
+                'mitarbeiter_id':vals['mitarbeiter_id'],
+                'backend_kontakte_id':vals['backend_kontakte_id'] or False,
+                'ChamBranch_rel':vals['ChamBranch_rel'],
+                'ToDoPhone':vals['ToDoPhone'],
+                'rem_Content':vals['rem_Content'],
+                'frkKathegory_id':vals['frkKathegory_id'],
+                'tikDueDate':vals['tikDueDate'],
+                'mandanten_id':vals['mandanten_id'],
+                'frkRemark':vals['frkRemark'],
+                'tikStartDate':vals['tikStartDate'],
+                'tikCloseDate':vals['tikCloseDate'],
+                'ticket_id':vals['ticket_id'],
+                
+		}
+	    return self.env['project.issue'].create(seq)
+
+	@api.model
+	def create(self, vals):
+	    # We just need to create the relevant id 
+	    if not vals.get('project_issue_id'):
+	       vals.update({'project_issue_id': self.sudo()._create_sequence(vals).id})
+	    return super(Felix1Ticket, self).create(vals)
+                  
+	
         #### create ticket id 
         @api.multi
 	def creat_ticket_id(self):
