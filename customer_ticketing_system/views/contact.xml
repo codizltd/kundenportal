@@ -97,9 +97,9 @@
 		    <field name="view_mode">tree,form</field>
 		   
 		</record>
-			<!--<menuitem id="menu_main" name="Contact" />
+			<menuitem id="menu_main" name="Contact" />
 			 <menuitem id="menu_contact" name="Contact" parent="menu_main"/>
-			<menuitem id="sub_menu" name="Contact" parent="menu_contact" action="action_contact_system123"/>-->
+			<menuitem id="sub_menu" name="Contact" parent="menu_contact" action="action_contact_system123"/>
 			
 			
    

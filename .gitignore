@@ -1,3 +1,5 @@
 #ognore .pyc files
 *.pyc
+*.py~
 /felix1de_backend/*.pyc
+/felix1de_backend/*.py~

@@ -10,7 +10,7 @@
 				   <field name="name"/>
 		                   <field name="anrede"/>
 		                   <field name="vornamenachname"/>
-		                  <!-- <field name="nachnamevorname"/>-->
+		                   <field name="nachnamevorname"/>
 		                    <field name="telefon1"/>
 		        </tree>
 		    </field>
@@ -37,7 +37,7 @@
                                <field name="con_acquired_by"/>
                                <field name="contact_since"/>
                                <field name="vornamenachname"/>
-							  <!-- <field name="nachnamevorname"/>-->
+							   <field name="nachnamevorname"/>
 							    <field name="fax"/>
 							   <field name="bemerkung"/>
 							   <field name="remark"/>
@@ -100,10 +100,6 @@
 		                      
 		                       </notebook>	 
 		           </sheet>
-                            <div class="oe_chatter">
-				    <field name="message_follower_ids" widget="mail_followers" />
-				    <field name="message_ids" widget="mail_thread"/>
-				</div>
 		        </form>
 		    </field>
 		</record>
@@ -116,7 +112,7 @@
 		   
 		</record>
 		 <menuitem id="kontakte_root_menu1" name="kontakte" sequence="4"/> 
-		    <menuitem id="sub_menu_kontakte1" parent="kontakte_root_menu1" name="kontakte List"/> 
+		    <menuitem id="sub_menu_kontakte1" parent="kontakte_root_menu1" name="Contact List"/> 
 		    <menuitem id="sub_menu_kontakte_sub" parent="sub_menu_kontakte1" name="kontakte" action="action_kontakte_view"/> 
 		
 	</data>

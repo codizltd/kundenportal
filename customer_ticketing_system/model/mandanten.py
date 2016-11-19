@@ -1,9 +1,8 @@
 from openerp import models, fields, api,_
 
 class backend_mandanten(models.Model):
-    _name='backend.mandanten'
-    _inherit=['backend.mandanten','mail.thread']
- 
+    _inherit='backend.mandanten'
+    
     contact_id=fields.Many2one('backend.kontakte', string='Contact ID')
     bank_rel=fields.One2many('bank.detail', 'mandant_id')
     order_id=fields.One2many('client.order', 'client_order_id')

@@ -1,8 +1,7 @@
 from openerp import models, fields, api,_
 
 class backend_auftraege(models.Model):
-    _name='backend.auftraege'
-    _inherit=['backend.auftraege','mail.thread']
+    _inherit='backend.auftraege'
     
     product_id=fields.One2many('backend.line', 'line')
    

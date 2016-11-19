@@ -2,13 +2,9 @@
 
 from openerp import models, fields, api,_
 from datetime import time, datetime
-import apiais
 
 class backend_kanzleien(models.Model):
     _name='backend.kanzleien'
-    _inherit='backend.apiais.accessid'
-    
-    accessid=fields.Char('ID', compute='_lookup_accessid')
     
     name=fields.Char(String="Niederlassung", help="Name des Niederlassung")
     bemerkung=fields.Text('Bemerkung')
@@ -21,11 +17,11 @@ class backend_kanzleien(models.Model):
     ortzusatz=fields.Char('Ort(Zusatz)')
     email=fields.Char('Email')
     vertragsart=fields.Char('Vertragsart')
-    etaxberaternummer=fields.Char('ETAXBeraternummer')
+    ETAXBeraternummer=fields.Char('ETAXBeraternummer')
     Lohnberaternummer=fields.Char('Lohnberaternummer')
     reweTestkanzlei=fields.Boolean('reweTestkanzlei')
-    sageaccedition=fields.Boolean('Sage Acc Edition')
-    virtuellesetax=fields.Char('virtuelles ETAX')
+    SageAcCEdition=fields.Boolean('Sage Acc Edition')
+    virtuellesETAX=fields.Char('virtuelles ETAX')
     etlnummerstammkanzlei=fields.Char('ETL Nummer Stammkanzlei')
     namestammkanzlei=fields.Char('Stammkanzlei (Name)')
     ortstammkanzlei=fields.Char('Stammkanzlei (Ort)')

@@ -14,7 +14,7 @@ und Integrationstool für die Unternehmenslogik.
     """,
     'website': 'http://www.getodoo.com, www.hiyacoding.co.uk',
     'images' : [],
-    'depends' : ['base','mail','hr', 'project_issue','felix1de_backend'],
+    'depends' : ['base','mail','hr'],
     'data': [
        
         'security/ir.model.access.csv',
@@ -34,7 +34,6 @@ und Integrationstool für die Unternehmenslogik.
         'views/mandanten.xml',
         'views/kontakte_view.xml',
         'views/kanzleien.xml',
-        'views/project_view.xml',
             ],
     'demo': [],
     'application': True,

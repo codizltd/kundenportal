@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api,_
-import apiais
 
 class backend_mandanten(models.Model):
     _name='backend.mandanten'
-    _inherit='backend.apiais.accessid'
     
-    accessid=fields.Char('ID', compute='_lookup_accessid')
-    name=fields.Char(String="Mandant", help="Name des Mandanten", required=True)
+    name=fields.Char(String="Mandant", help="Name des Mamdanten", required=True)
     bemerkung=fields.Text()
-    mandantennummer=fields.Char('Mandantennummer',required=True, index=True) 
+    mandantennummer=fields.Char('Mandantennummer',required=True, Index=True) 
     emailpisa=fields.Char(String="eMailPISA")
-    kanzlei=fields.Many2one('backend.kanzleien', ondelete='set null', String="Kanzlei", index=True)
-    steuerberater=fields.Many2one('backend.berater', ondelete='set null', String="Steuerberater", index=True)
-    unternehmensform=fields.Many2one('backend.unternehmensformen', ondelete='set null', String="Unternehmensform", index=True)
+    kanzlei=fields.Many2one('backend.kanzleien', ondelete='set null', String="Kanzlei", Index="True")
+    steuerberater=fields.Many2one('backend.berater', ondelete='set null', String="Steuerberater", Index="True")
+    unternehmensform=fields.Many2one('backend.unternehmensformen', ondelete='set null', String="Unternehmensform", Index="True")
     branche=fields.Many2one('backend.branchen', ondelete='set null', String="Branche")
-    status=fields.Many2one('backend.mandantenstatus', ondelete='set null', index=True)
+    status=fields.Many2one('backend.mandantenstatus', ondelete='set null')
     empfaenger1=fields.Char()
     empfaenger2=fields.Char()
     strasse=fields.Char('Straße')
