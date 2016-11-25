@@ -21,7 +21,7 @@
 		    <field name="name">mandant</field>
 		    <field name="model">backend.mandanten</field>
 		    <field name="arch" type="xml">
-		       
+		       <form string="Mandant">
 		          <sheet>   
 					   <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
 					     <div class="oe_title">
@@ -113,7 +113,11 @@
 						    
 					   </notebook>
 		           </sheet>
-		       
+                              <div class="oe_chatter">
+				    <field name="message_follower_ids" widget="mail_followers" />
+				    <field name="message_ids" widget="mail_thread"/>
+				</div>
+		       </form>
 		    </field>
 		</record>
 		  <record id="action_mandant_system" model="ir.actions.act_window">
